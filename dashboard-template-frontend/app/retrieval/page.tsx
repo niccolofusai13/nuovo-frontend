@@ -63,7 +63,7 @@ export default function RetrievalPage() {
             <CardTitle className="text-lg">Retrieved Images</CardTitle>
           </CardHeader>
           <CardContent>
-            <ImageGallery images={results.map(result => ({ url: result.url, caption: result.caption }))} />
+            <ImageGallery images={results} />
           </CardContent>
         </Card>
       </div>
