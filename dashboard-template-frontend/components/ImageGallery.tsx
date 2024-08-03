@@ -1,6 +1,6 @@
-// ImageGallery.tsx
+// components/ImageGallery.tsx
 interface ImageGalleryProps {
-  images: string[];
+  images: { url: string; caption: string }[];
 }
 
 export function ImageGallery({ images }: ImageGalleryProps) {
@@ -11,12 +11,15 @@ export function ImageGallery({ images }: ImageGalleryProps) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {images.map((image, index) => (
-        <div key={index} className="aspect-square overflow-hidden rounded-md">
-          <img
-            src={image}
-            alt={`Retrieved image ${index + 1}`}
-            className="w-full h-full object-cover"
-          />
+        <div key={index} className="flex flex-col">
+          <div className="aspect-square overflow-hidden rounded-md">
+            <img
+              src={image.url}
+              alt={image.caption}
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <p className="mt-2 text-sm text-muted-foreground">{image.caption}</p>
         </div>
       ))}
     </div>

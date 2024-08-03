@@ -1,14 +1,49 @@
-export async function retrieveImages(input: string, isImage: boolean): Promise<string[]> {
-    // Placeholder: Replace with actual API call
-    console.log(`API call for ${isImage ? 'image' : 'text'}: ${input}`);
-    
-    // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    // Return placeholder image URLs
-    return [
-      'https://picsum.photos/300/300?random=1',
-      'https://picsum.photos/300/300?random=2',
-      'https://picsum.photos/300/300?random=3',
-    ];
+// lib/api.ts
+
+interface SearchRequest {
+  text: string;
+  image_url: string;
+  num_results: number;
+  indice_name: string;
+}
+
+interface SearchResult {
+  key: string;
+  caption: string;
+  url: string;
+  score: number;
+}
+
+interface SearchResponse {
+  results: SearchResult[];
+}
+
+export async function searchImages(query: string, isImage: boolean): Promise<SearchResult[]> {
+  const request: SearchRequest = {
+    text: isImage ? '' : query,
+    image_url: isImage ? query : '',
+    num_results: 100,
+    indice_name: 'coco'
+  };
+
+  try {
+    const response = await fetch('http://0.0.0.0:8022/api/v1/search', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(request)
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const data: SearchResponse = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error('Error fetching images:', error);
+    throw error;
   }
+}

@@ -1,21 +1,27 @@
+// app/retrieval/page.tsx
 'use client';
 
 import { useState } from 'react';
 import { PageLayout } from '@/components/PageLayout';
 import { RetrievalForm } from '@/components/RetrievalForm';
 import { ImageGallery } from '@/components/ImageGallery';
-import { retrieveImages } from '@/lib/api';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { FileText } from 'lucide-react';
 
-export default function RetrievalPage() {
-  const [images, setImages] = useState<string[]>([]);
+interface SearchResult {
+  key: string;
+  caption: string;
+  url: string;
+  score: number;
+}
 
-  const handleRetrieval = async (input: string, isImage: boolean) => {
-    const retrievedImages = await retrieveImages(input, isImage);
-    setImages(retrievedImages);
+export default function RetrievalPage() {
+  const [results, setResults] = useState<SearchResult[]>([]);
+
+  const handleRetrieval = (newResults: SearchResult[]) => {
+    setResults(newResults);
   };
 
   return (
@@ -57,7 +63,7 @@ export default function RetrievalPage() {
             <CardTitle className="text-lg">Retrieved Images</CardTitle>
           </CardHeader>
           <CardContent>
-            <ImageGallery images={images} />
+            <ImageGallery images={results.map(result => ({ url: result.url, caption: result.caption }))} />
           </CardContent>
         </Card>
       </div>
