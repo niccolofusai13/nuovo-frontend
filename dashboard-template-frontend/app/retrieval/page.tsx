@@ -32,6 +32,9 @@ export default function RetrievalPage() {
         <Card className="w-full">
           <CardHeader>
             <CardTitle className="text-lg">Retrieve Images</CardTitle>
+            <p className="text-sm text-muted-foreground mt-1">
+              Retrieve similar images based on your description.
+            </p>
           </CardHeader>
           <CardContent>
             <Tabs defaultValue="text" className="w-full">

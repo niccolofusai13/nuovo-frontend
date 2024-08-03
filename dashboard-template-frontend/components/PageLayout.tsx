@@ -32,7 +32,7 @@ export function PageLayout({ children }: PageLayoutProps) {
     <div className="flex h-screen bg-gray-50">
       <aside className="w-14 bg-white border-r flex flex-col items-center py-4 space-y-4">
         <Link href="/" className="p-2 rounded-full bg-primary text-white">
-          A
+          N
         </Link>
         <NavItem href="/" icon={<Home size={20} />} label="Dashboard" />
         <NavItem href="/retrieval" icon={<Image size={20} />} label="Retrieval" />

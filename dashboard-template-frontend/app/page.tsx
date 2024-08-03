@@ -23,7 +23,7 @@ export default function HomePage() {
         <h2 className="text-4xl sm:text-5xl font-light mb-6 leading-tight">
             Simplify your AI data workflow with <span className="font-normal text-primary">Nuovo</span>
         </h2>
-        <p className="text-lg mb-10 text-muted-foreground">Streamline data generation, labeling and curation with our data copilot.</p>
+        <p className="text-lg mb-10 text-muted-foreground">Streamline data generation, labeling and curation for your vision models with our data copilot.</p>
         <Link href="/retrieval" passHref>
           <Button size="lg" variant="outline" className="rounded-full px-8">
             Get Started
