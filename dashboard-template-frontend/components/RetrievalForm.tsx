@@ -1,4 +1,3 @@
-// RetrievalForm.tsx
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -22,9 +21,9 @@ export function RetrievalForm({ onSubmit, isImage }: RetrievalFormProps) {
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder={isImage ? 'Enter image URL' : 'Describe the image you want to retrieve'}
-        className="w-full"
+        className="w-full h-9 text-sm"
       />
-      <Button type="submit" className="w-full">Retrieve Images</Button>
+      <Button type="submit" className="h-9 text-sm px-4">Retrieve Images</Button>
     </form>
   );
 }

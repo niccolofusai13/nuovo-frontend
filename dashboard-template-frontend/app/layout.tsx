@@ -1,5 +1,5 @@
 import './globals.css';
-
+import { TooltipProvider } from '@/components/ui/tooltip';
 import { Analytics } from '@vercel/analytics/react';
 
 export const metadata = {
@@ -15,7 +15,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="flex min-h-screen w-full flex-col">{children}</body>
+      <body className="flex min-h-screen w-full flex-col">
+        <TooltipProvider>
+          {children}
+        </TooltipProvider>
+      </body>
       <Analytics />
     </html>
   );

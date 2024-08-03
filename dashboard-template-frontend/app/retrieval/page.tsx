@@ -8,6 +8,7 @@ import { retrieveImages } from '@/lib/api';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
+import { FileText } from 'lucide-react';
 
 export default function RetrievalPage() {
   const [images, setImages] = useState<string[]>([]);
@@ -19,15 +20,18 @@ export default function RetrievalPage() {
 
   return (
     <PageLayout>
-      <div className="flex flex-col space-y-4 p-4 md:p-8 bg-gray-50 min-h-screen">
+      <div className="flex flex-col space-y-4 p-4 md:p-8">
         <div className="flex justify-between items-center">
           <h1 className="text-2xl font-semibold">Image Retrieval</h1>
-          <Button>Export</Button>
+          <Button size="sm" variant="outline" className="h-8 px-3 flex items-center gap-2">
+            <FileText size={16} />
+            Export
+          </Button>
         </div>
         
         <Card className="w-full">
           <CardHeader>
-            <CardTitle>Retrieve Images</CardTitle>
+            <CardTitle className="text-lg">Retrieve Images</CardTitle>
           </CardHeader>
           <CardContent>
             <Tabs defaultValue="text" className="w-full">
@@ -47,7 +51,7 @@ export default function RetrievalPage() {
 
         <Card className="w-full">
           <CardHeader>
-            <CardTitle>Retrieved Images</CardTitle>
+            <CardTitle className="text-lg">Retrieved Images</CardTitle>
           </CardHeader>
           <CardContent>
             <ImageGallery images={images} />
