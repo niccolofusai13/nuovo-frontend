@@ -1,4 +1,3 @@
-```markdown
 # Next.js 14 Admin Dashboard Template
 
 A modern admin dashboard built with the Next.js App Router.
@@ -61,4 +60,3 @@ Follow these steps to set up the project locally:
 - Modify the layout in `app/layout.tsx`
 - Add new components in the `/components` directory
 - Create new routes by adding directories and page files in the `/app` directory
-```
