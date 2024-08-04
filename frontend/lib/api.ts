@@ -27,7 +27,7 @@ export async function searchImages(query: string, isImage: boolean): Promise<Sea
   };
 
   try {
-    const response = await fetch('http://0.0.0.0:8023/api/v1/search', {
+    const response = await fetch('http://129.146.75.243:8024/api/v1/search', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
